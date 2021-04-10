@@ -7,13 +7,12 @@
 int main(void)
 {
 	int n_back_mode = N_BACK;
-	int n_back_box[N_BACK + 1] = { 0 }; //n back 박스 생성
+	int n_back_box[N_BACK + 1]; 	//n back 박스 생성
 
-	int score_r = 0;                	// 정답 수 
-	time_t new_time, old_time;    		// 경과 시간 
-	int ScoreStart=0;                   // 답 입력 여부 
+	int score_r = 0;                		// 정답 수 
+	int ScoreStart=0;               	    // 답 입력 여부 
 	int count = 0;
-	int real_q_count = 0;				// 첫 시작 카운트를 제외하고서 문제 수를 카운트
+	int real_q_count = 0;					// 첫 시작 카운트를 제외하고서 문제 수를 카운트
 
 	char prev_answer = 'Z';
 	char my_prev_answer = 'Z';
@@ -21,7 +20,7 @@ int main(void)
 	char answer = 'Z';
 	char my_answer = 'Z';
 
-	srand(time(NULL));        // 시작할 때마다 값이 달라지도록 함
+	srand(time(NULL));      				// 시작할 때마다 값이 달라지도록 함
 
 	printf("********************************\n");
 	printf("*   Welcome to brain training  *\n");
@@ -37,37 +36,45 @@ int main(void)
 	printf("Of course, if there are no previous numbers to compare,\n");
 	printf("you can just prepare you are mind, right? Good luck.\n");
 	printf("\n");
-	printf("Are you ready ? Press Enter(please give me answer in 2 s)");
+	printf("Are you ready ? Press Enter(please give me answer in 2 s)\n");
+	printf("Your N BACK MODE : %d\n", N_BACK);
 	getchar();
 
+    //init n_back_box[N_BACK + 1]
+	for (int index = 0; index < N_BACK+1; index++)
+	{
+		n_back_box[index] = 0 ;
+	}
+
 	while (1) {
-		for (int i = 0; i <= n_back_mode; i++)//배열 숫자 밀어내기
+		for (int i = 0; i <= n_back_mode; i++)	//배열 숫자 밀어내기
 		{
 			if (i != n_back_mode)
 				n_back_box[i] = n_back_box[i + 1];
 			else
 				n_back_box[i] = 0;
 		}
-		n_back_box[n_back_mode] = (rand() % 9 + 1) * (rand() % 9 + 1) % 10;//한자리의 랜덤한 숫자 부여
-		count++;//랜덤 생성 횟수
+		n_back_box[n_back_mode] = (rand() % 9 + 1) * (rand() % 9 + 1) % 10;	//한자리의 랜덤한 숫자 부여
+		count++;	//랜덤 생성 횟수
 
-		if (n_back_box[0] == n_back_box[n_back_mode])//n-back 정답 추출
+		if (n_back_box[0] == n_back_box[n_back_mode]) 	//n-back 정답 추출
 			answer = 'o';
 		else
 			answer = 'x';
 
-		system("clear");
+		system("clear");	//clear screen
 		
 		if(count>=N_BACK+1){
-			printf("총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n", real_q_count, score_r, prev_answer, my_prev_answer);
+			printf("총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n", 
+				real_q_count, score_r, prev_answer, my_prev_answer);
 			ScoreStart = 1;
 		}
 
-		printf("Random : %d\n", n_back_box[n_back_mode]);  // 메인 랜덤 숫자
+		printf("Random : %d\n", n_back_box[n_back_mode]);  	// 메인 랜덤 숫자
 
 		scanf(" %c",&my_answer);       // 답을 받음
 
-		if (ScoreStart){
+		if (ScoreStart){ 	//score check start !
 			if (answer == my_answer) 
 				score_r++;    // 정답수 
 		}
