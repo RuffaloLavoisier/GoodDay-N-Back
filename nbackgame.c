@@ -16,8 +16,10 @@ int main(void)
 	for (int i = 0; i <= BASE-1; i++){ //충분한 상자를 초기화
 		n_back_mode_box[i] = 0;
 	}
-	
-//	int n_back_mode_box[n_back_mode + 1]; 	//n back 박스 생성
+
+	FILE *fp = fopen("answer", "w");// save log answer
+
+	//	int n_back_mode_box[n_back_mode + 1]; 	//n back 박스 생성
 
 	int score_r = 0;                		// 정답 수 
 	int ScoreStart=0;               	    // 답 입력 여부 
@@ -98,13 +100,17 @@ int main(void)
 			//문제 출제 부터 카운트,맞은 갯수 카운트, 이전 정답, 내가 쓴 정답
 			printf("총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n", 
 				real_q_count, score_r, prev_answer, my_prev_answer);
+			fprintf(fp,"총 문제 : %d 맞은 갯수 : %d 이전 정답 : %c 내가 쓴 정답 : %c ", //(save log)
+				real_q_count, score_r, prev_answer, my_prev_answer);
 			ScoreStart = 1;	//문제 출제 부터 점수 체크 시작
 		}
 		//최신화된 랜덤 숫자 프린트
-		printf("Random : %d\n", n_back_mode_box[n_back_mode]);  	// 메인 랜덤 숫자
+		printf("Random : %d\n", n_back_mode_box[n_back_mode]);  		// 메인 랜덤 숫자
+		fprintf(fp,"Random : %d\n", n_back_mode_box[n_back_mode]);  	// 메인 랜덤 숫자(save log)
 		//사용자로부터 값을 받음
 		scanf(" %c",&my_answer);       // 답을 받음
-		
+		if (my_answer=='q')
+			break;
 		//점수 체크 시작되었다면
 		if (ScoreStart)
 		{ 	//score check start !
@@ -117,9 +123,12 @@ int main(void)
 		//이전 정답에 현재 정답을 대입
 		prev_answer = answer;
 		//총문제 카운트 시작 : 지정된 n back 상자 보다 카운트가 크면 총문제 카운트 시작
-		if (count >= sizeof(n_back_mode_box) / sizeof(n_back_mode_box[0])) 
+		//if (count >= sizeof(n_back_mode_box) / sizeof(n_back_mode_box[0])) 
+		if (count >= n_back_mode+1 ) 
 		{
 			real_q_count++;
 		}
 	}
+	printf("end\n");
+	fclose(fp);//close file
 }
