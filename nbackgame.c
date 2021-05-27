@@ -50,6 +50,25 @@ int main(void)
 	printf("\n");
 	printf("Are you ready ? Press Enter(please give me answer in 2 s)\n");
  	printf("\n");
+	getchar();
+
+	printf("sample ! \n");
+	printf("\n");
+
+	printf("    **************           \n");
+	printf("    *            *           \n");
+	printf("    *     ****************   \n");
+	printf("    *     *      *       *   \n");
+	printf("    V     V      *       *   \n");
+	printf(" ****** ****** ****** ****** \n");
+	printf("*      *      *      *      *\n");
+	printf("*   3  *   2  *   1  *   2  *\n");
+	printf("*      *      *      *      *\n");
+	printf(" ****** ****** ****** ****** \n");
+	printf(" First  Second Third  Fourth \n");
+	printf(" None   None    ( X )  ( O ) \n");
+	
+	getchar();
 
 	printf("How many boxes do you need?\n");
 	scanf("%d", &n_back_mode);
