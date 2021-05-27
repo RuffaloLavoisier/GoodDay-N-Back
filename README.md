@@ -1,19 +1,19 @@
-# What is that ?
+# What is that ?  
 
 ## Intro  
 
-`We grow up when we rest properly.`  
+`We grow up when we rest properly.`    
+ 
+## Reference    
 
-## Reference  
+N-back game . running your brain    
 
-N-back game . running your brain  
+LINK > https://www.youtube.com/watch?v=Ro5AI6nhzlQ  
 
-LINK > https://www.youtube.com/watch?v=Ro5AI6nhzlQ
-
-## Update
+## Update  
 
 2021 04 11 add init arry n box  
-2021 04 11 update comment README.md
-2021 04 17 fix function structure
-2021 05 27 input number from user
-2021 05 27 save log
+2021 04 11 update comment README.md  
+2021 04 17 fix function structure  
+2021 05 27 input number from user  
+2021 05 27 save log  
