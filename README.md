@@ -16,5 +16,4 @@ LINK > https://www.youtube.com/watch?v=Ro5AI6nhzlQ
 2021 04 11 update comment README.md
 2021 04 17 fix function structure
 2021 05 27 input number from user
-
-(maybe)save log
+2021 05 27 save log
