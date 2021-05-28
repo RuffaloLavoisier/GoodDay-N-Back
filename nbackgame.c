@@ -52,6 +52,7 @@ int main(void)
  	printf("\n");
 	getchar();
 
+	system("clear");	//clear screen
 	printf("sample ! \n");
 	printf("\n");
 
@@ -69,6 +70,8 @@ int main(void)
 	printf(" None   None    ( X )  ( O ) \n");
 	
 	getchar();
+
+	system("clear");	//clear screen
 
 	printf("How many boxes do you need?\n");
 	scanf("%d", &n_back_mode);
@@ -117,14 +120,14 @@ int main(void)
 		if( count >= n_back_mode + 1 )
 		{
 			//문제 출제 부터 카운트,맞은 갯수 카운트, 이전 정답, 내가 쓴 정답
-			printf("총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n", 
-				real_q_count, score_r, prev_answer, my_prev_answer);
-			fprintf(fp,"총 문제 : %d 맞은 갯수 : %d 이전 정답 : %c 내가 쓴 정답 : %c ", //(save log)
-				real_q_count, score_r, prev_answer, my_prev_answer);
+			printf("%d - B A C K\n총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n", 
+				n_back_mode,real_q_count, score_r, prev_answer, my_prev_answer);
+			fprintf(fp,"%d - B A C K 총 문제 : %d 맞은 갯수 : %d 이전 정답 : %c 내가 쓴 정답 : %c 정답 : %c ", //(save log)
+				n_back_mode,real_q_count, score_r, prev_answer, my_prev_answer,answer);
 			ScoreStart = 1;	//문제 출제 부터 점수 체크 시작
 		}
 		//최신화된 랜덤 숫자 프린트
-		printf("Random : %d\n", n_back_mode_box[n_back_mode]);  		// 메인 랜덤 숫자
+		printf("exit : q\nRandom : %d\n", n_back_mode_box[n_back_mode]);  		// 메인 랜덤 숫자
 		fprintf(fp,"Random : %d\n", n_back_mode_box[n_back_mode]);  	// 메인 랜덤 숫자(save log)
 		//사용자로부터 값을 받음
 		scanf(" %c",&my_answer);       // 답을 받음
@@ -148,6 +151,7 @@ int main(void)
 			real_q_count++;
 		}
 	}
-	printf("end\n");
+	system("clear");	//clear screen
+	printf("save log\n");
 	fclose(fp);//close file
 }
