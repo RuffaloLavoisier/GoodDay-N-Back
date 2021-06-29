@@ -12,6 +12,13 @@
 랜덤하게 나온 숫자가 지정한 N번째 전 숫자와 동일한지 판단합니다.  
 동일하면 'O' 아니면 'X' 를 선택해 게임을 진행하는 간단한 게임입니다.  
 
+### Compile && Build
+
+```
+$ gcc -o N-Back nbackgame.c
+$ ./N-Back
+```
+
 ### Sample
 
 >input : 3,3,5,2,3  
