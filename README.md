@@ -25,6 +25,8 @@ $ ./N-Back
 
 ### Sample
 
+<img src="img/nback.png">
+
 >input : 3,3,5,2,3  
 
 >2-Back : x  
