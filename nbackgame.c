@@ -92,19 +92,16 @@ int main(void)
 	//------------------------------------------------
 
 	//main loop
-	while (1)
-	{
-		for (int box = 0; box <= n_back_mode; box++)
-		{ //배열 숫자 밀어내기
+	while (1){
+		for (int box = 0; box <= n_back_mode; box++){ 
+			//배열 숫자 밀어내기
 
 			//현재 카운트하고 있는 box 값이
 			//설정된 nback mode 값과 같지 않을 때 박스 밀어내기 시작
-			if (box != n_back_mode)
-			{
+			if (box != n_back_mode){
 				n_back_mode_box[box] = n_back_mode_box[box + 1]; // n back 첫번쨰 박스에는 두번째 박스의 값을 집어 넣는다.
 			}
-			else
-			{
+			else{
 				n_back_mode_box[box] = 0; // n back 3 : **0 - 최신 값을 가져오기 전 0으로 초기화
 			}
 		}
@@ -126,8 +123,7 @@ int main(void)
 		system("clear"); //clear screen
 
 		//랜덤 보낸 숫자 횟수 값이 n back 상자보다 많아질 때 문제 출제 시작
-		if (count >= n_back_mode + 1)
-		{
+		if (count >= n_back_mode + 1){
 			//문제 출제 부터 카운트,맞은 갯수 카운트, 이전 정답, 내가 쓴 정답
 			printf("%d - B A C K\n총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n",
 				   n_back_mode, real_q_count, score, prev_answer, my_prev_answer);
@@ -144,8 +140,8 @@ int main(void)
 		if (my_answer == 'q')
 			break;
 		//점수 체크 시작되었다면
-		if (ScoreStart)
-		{							 //score check start !
+		if (ScoreStart){
+			 //score check start !
 			if (answer == my_answer) //N BACK 정답과 내가 쓴 정답이 같을 경우
 				score++;			 // 정답수
 		}
