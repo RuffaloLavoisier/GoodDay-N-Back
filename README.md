@@ -1,10 +1,10 @@
-# What is that ?  
+# N-Back
 
-## Intro  
+## Introduction  
 
 `We grow up when we rest properly.`  
   
-문제적 남자에서 나온 <N-back> 게임에 흥미를 느껴 제작하였습니다.  
+[문제적 남자](https://www.youtube.com/watch?v=Ro5AI6nhzlQ)  에서 나온 <N-back> 게임에 흥미를 느껴 제작하였습니다.  
 프로그래밍 하다가 휴식을 취할 때 사용하여 자투리 시간도 즐겁게 보내고자 제작하였습니다.
 
 ## Usage
@@ -14,13 +14,15 @@
 
 ### Environment
 
-Linux
+`Linux`  
+
+Linux CLI 환경에서 실행하길 권고합니다.
 
 ### Compile && Build
 
 ```
 $ gcc -o N-Back nbackgame.c
-$ ./N-Back
+$ ./N-Back 
 ```
 
 ### Sample
