@@ -4,9 +4,9 @@
 
 //#define n_back_mode 3 //what do you want game version ?
 
-// 윈도우 사용자일 경우 주석처리합니다.
-// If you are a window user, comment it.
-#define LINUX
+// 리눅스 사용자일 경우 주석처리합니다.
+// If you are a Linux user, comment it.
+//#define WINDOWS
 
 #define BASE 20
 
@@ -61,7 +61,7 @@ int main(void)
 	//--------------print 영역------------
 	getchar();
 
-#if defined LINUX
+#if defined WINDOWS
 	system("cls");
 #else
 	system("clear");	 // clear screen
@@ -85,7 +85,7 @@ int main(void)
 	//--------------print 영역------------
 	getchar();
 
-#if defined LINUX
+#if defined WINDOWS
 	system("cls");
 #else
 	system("clear");	 // clear screen
@@ -136,7 +136,7 @@ int main(void)
 			answer = 'x';
 
 //문제 프린트 전 이전에 프린트 된 내용을 삭제
-#if defined LINUX
+#if defined WINDOWS
 		system("cls");
 #else
 		system("clear"); // clear screen
@@ -173,7 +173,7 @@ int main(void)
 		prev_answer = answer;
 	}
 
-#if defined LINUX
+#if defined WINDOWS
 	system("cls");
 #else
 	system("clear");	 // clear screen
