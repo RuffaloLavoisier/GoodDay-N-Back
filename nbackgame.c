@@ -4,6 +4,10 @@
 
 //#define n_back_mode 3 //what do you want game version ?
 
+// 윈도우 사용자일 경우 주석처리합니다.
+// If you are a window user, comment it.
+#define LINUX
+
 #define BASE 20
 
 int main(void)
@@ -15,7 +19,7 @@ int main(void)
 	int n_back_mode_box[BASE];
 
 	for (int box = 0; box <= BASE - 1; box++)
-	{ //init n box - 충분한 상자를 초기화
+	{ // init n box - 충분한 상자를 초기화
 		n_back_mode_box[box] = 0;
 	}
 
@@ -25,7 +29,7 @@ int main(void)
 	//	int n_back_mode_box[n_back_mode + 1]; 	//n back 박스 생성 - version 1
 	// 전처리를 이용해 컴파일 할 때 선언해준 상수를 가지고 n box를 생성한 경우
 
-	int score = 0;	 		// 정답 수 (O,X)
+	int score = 0;		  // 정답 수 (O,X)
 	int ScoreStart = 0;	  // 답 입력 여부 (Bool)
 	int count = 0;		  //문제 출제 조건 (랜덤 숫자 지나치기)
 	int real_q_count = 0; // 첫 시작 카운트를 제외하고서 문제 수를 카운트
@@ -57,7 +61,11 @@ int main(void)
 	//--------------print 영역------------
 	getchar();
 
-	system("clear"); //clear screen
+#if defined LINUX
+	system("cls");
+#else
+	system("clear");	 // clear screen
+#endif
 	//--------------print 영역------------
 	printf("sample ! \n");
 	printf("\n");
@@ -77,12 +85,16 @@ int main(void)
 	//--------------print 영역------------
 	getchar();
 
-	system("clear"); //clear screen
+#if defined LINUX
+	system("cls");
+#else
+	system("clear");	 // clear screen
+#endif
 
 	printf("How many boxes do you need?\n");
 	scanf("%d", &n_back_mode);
-	//printf("Your N BACK MODE : %d\n", n_back_mode);
-	//getchar();
+	// printf("Your N BACK MODE : %d\n", n_back_mode);
+	// getchar();
 
 	for (int index = 0; index <= n_back_mode; index++) //사용자로부터 지정받은 숫자로 n box 초기화
 	{
@@ -91,39 +103,48 @@ int main(void)
 
 	//------------------------------------------------
 
-	//main loop
-	while (1){
-		for (int box = 0; box <= n_back_mode; box++){ 
+	// main loop
+	while (1)
+	{
+		for (int box = 0; box <= n_back_mode; box++)
+		{
 			//배열 숫자 밀어내기
 
 			//현재 카운트하고 있는 box 값이
 			//설정된 nback mode 값과 같지 않을 때 박스 밀어내기 시작
-			if (box != n_back_mode){
+			if (box != n_back_mode)
+			{
 				n_back_mode_box[box] = n_back_mode_box[box + 1]; // n back 첫번쨰 박스에는 두번째 박스의 값을 집어 넣는다.
 			}
-			else{
+			else
+			{
 				n_back_mode_box[box] = 0; // n back 3 : **0 - 최신 값을 가져오기 전 0으로 초기화
 			}
 		}
 
-		//n back 제일 마지막 상자에 한자리의 랜덤한 숫자 부여
+		// n back 제일 마지막 상자에 한자리의 랜덤한 숫자 부여
 		n_back_mode_box[n_back_mode] = (rand() % 9 + 1) * (rand() % 9 + 1) % 10;
 
 		//랜덤 생성 횟수
 		count++; //	n back 문제 출제 조건이 갖춰지는지 확인을 위한 이전 값을 넘김
 				 // 3 Back : 랜덤한 숫자 3개를 지나쳐야 한다.
 
-		//n-back 정답 추출
+		// n-back 정답 추출
 		if (n_back_mode_box[0] == n_back_mode_box[n_back_mode]) // 첫번째 값과 n back 마지막 값이 같을 때 정답 처리
 			answer = 'o';
 		else
 			answer = 'x';
 
-		//문제 프린트 전 이전에 프린트 된 내용을 삭제
-		system("clear"); //clear screen
+//문제 프린트 전 이전에 프린트 된 내용을 삭제
+#if defined LINUX
+		system("cls");
+#else
+		system("clear"); // clear screen
+#endif
 
 		//랜덤 보낸 숫자 횟수 값이 n back 상자보다 많아질 때 문제 출제 시작
-		if (count >= n_back_mode + 1){
+		if (count >= n_back_mode + 1)
+		{
 			//문제 출제 부터 카운트,맞은 갯수 카운트, 이전 정답, 내가 쓴 정답
 			printf("%d - B A C K\n총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n",
 				   n_back_mode, real_q_count, score, prev_answer, my_prev_answer);
@@ -140,9 +161,10 @@ int main(void)
 		if (my_answer == 'q')
 			break;
 		//점수 체크 시작되었다면
-		if (ScoreStart){
-			 //score check start !
-			if (answer == my_answer) //N BACK 정답과 내가 쓴 정답이 같을 경우
+		if (ScoreStart)
+		{
+			// score check start !
+			if (answer == my_answer) // N BACK 정답과 내가 쓴 정답이 같을 경우
 				score++;			 // 정답수
 		}
 		// 내가 쓴 정답을 이전 정답에 대입
@@ -151,7 +173,11 @@ int main(void)
 		prev_answer = answer;
 	}
 
-	system("clear"); //clear screen
+#if defined LINUX
+	system("cls");
+#else
+	system("clear");	 // clear screen
+#endif
 	printf("save log\n");
-	fclose(fp); //close file
+	fclose(fp); // close file
 }
