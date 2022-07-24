@@ -22,8 +22,8 @@ jobs:
     - name: Compile
       run: gcc -o build/NBACK nbackgame.c
     - name: Upload build file artifacts
-          uses: actions/upload-artifact@v2
-          with:
-            name: NBACK-linux
-            path: |
-              NBACK
+      uses: actions/upload-artifact@v2
+      with:
+        name: NBACK-linux
+        path: |
+          NBACK
