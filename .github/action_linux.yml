@@ -1,0 +1,29 @@
+name: N-back (linux)
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  build_linux:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Full-update
+      run: sudo apt-get update
+    - name: Ready gcc
+      run: sudo apt install -y build-essential
+    - name: Create build directory
+      run: mkdir build/
+    - name: Compile
+      run: gcc -o build/NBACK nbackgame.c
+    - name: Upload build file artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: NBACK-linux
+            path: |
+              NBACK
