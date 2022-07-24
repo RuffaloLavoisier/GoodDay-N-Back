@@ -26,4 +26,4 @@ jobs:
       with:
         name: NBACK-linux
         path: |
-          NBACK
+          build/NBACK
