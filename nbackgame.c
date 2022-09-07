@@ -1,6 +1,7 @@
 #include <stdio.h>	// standard input output
 #include <stdlib.h> // srand, rand
 #include <time.h>	// time_t, clock, difftime
+#include <math.h>
 
 //#define n_back_mode 3 //what do you want game version ?
 
@@ -148,8 +149,13 @@ int main(void)
 			//문제 출제 부터 카운트,맞은 갯수 카운트, 이전 정답, 내가 쓴 정답
 			printf("%d - B A C K\n총 문제 : %d 맞은 갯수 : %d \n이전 정답 : %c 내가 쓴 정답 : %c \n",
 				   n_back_mode, real_q_count, score, prev_answer, my_prev_answer);
-			fprintf(fp, "%d - B A C K 총 문제 : %d 맞은 갯수 : %d 이전 정답 : %c 내가 쓴 정답 : %c 현재 정답 : %c ", //(save log)
-					n_back_mode, real_q_count, score, prev_answer, my_prev_answer, answer);
+			int now_n_back_box = 0;
+			for (int i = 0; i <= n_back_mode; i++)
+			{
+				now_n_back_box = now_n_back_box + (n_back_mode_box[i] * pow(10, n_back_mode + 1 - i));
+			}
+			fprintf(fp, "%d - B A C K 총 문제 : %d 맞은 갯수 : %d 이전 정답 : %c 내가 쓴 정답 : %c 현재 정답 : %c 문제라인 : %d ", //(save log)
+					n_back_mode, real_q_count, score, prev_answer, my_prev_answer, answer, now_n_back_box);
 			ScoreStart = 1; //문제 출제 부터 점수 체크 시작
 			real_q_count++; //총문제 카운트 시작 : 지정된 n back 상자 보다 카운트가 크면 총문제 카운트 시작
 		}
