@@ -20,7 +20,7 @@ jobs:
     - name: Create build directory
       run: mkdir build/
     - name: Compile
-      run: gcc -o build/NBACK nbackgame.c
+      run: gcc -o build/NBACK nbackgame.c -lm
     - name: Upload build file artifacts
       uses: actions/upload-artifact@v2
       with:
