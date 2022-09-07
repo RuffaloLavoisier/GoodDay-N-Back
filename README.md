@@ -21,7 +21,7 @@ Linux CLI 환경에서 실행하길 권고합니다.
 ### Compile && Build
 
 ```
-$ gcc -o N-Back nbackgame.c
+$ gcc -o N-Back nbackgame.c -lm
 $ ./N-Back 
 ```
 
